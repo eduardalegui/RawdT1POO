@@ -6,4 +6,8 @@ public class Federacao {
     public Federacao(){
         paises = new ArrayList<Pais>();
     }
+
+    public ArrayList<Pais> getPaises(){
+        return paises;
+    }
 }

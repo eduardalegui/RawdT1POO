@@ -7,5 +7,7 @@ public class Convencao {
         acordos = new ArrayList<Acordo>();
     }
 
-    
+    public ArrayList<Acordo> getAcordo(){
+        return acordos;
+    }
 }
