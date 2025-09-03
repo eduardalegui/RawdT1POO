@@ -1,9 +1,0 @@
-1:BR;Brasil
-1:PT;Portugal
-1:US;Estados Unidos da America
-2:111;Cafe;11.11;PT;BR
-2:222;Aviao;22.22;US;BR
-2:333;Banana;33.33;PT;BR
-2:444;Carne;44.44;US;BR
-3:PT;Portugal
-4:333;Banana;33.33;PT;PT
