@@ -1,13 +1,11 @@
-// Imports
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.PrintStream;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
-import java.util.ArrayList;
-
 public class ACMETrade {
     private Scanner entrada = new Scanner(System.in);  
     private PrintStream saidaPadrao = System.out;  
@@ -47,18 +45,8 @@ public class ACMETrade {
         listarTodosOsAcordos();
         //9:
         listarNaoVendedores();
-
-
-        
-        
-        // metodo consultar um pais pela sigla;
-        // metodo consultar acordo pelo codigo;
-        // metodo consultar acordo pela sigla do comprador;
-        // metodo mudar nome de um determinado pais;
-        // metodo remover acordos de um determinado pais comprador;
-        // metodo listar todos os acordos;
-        // metodo lista todos os paises vendedores;
-        // metodo mostrar o pais com a maior quantidade de acordos como vendedor;
+        //10:
+        mostrarOPaisComAMaiorQuantidadeDeAcordosComoVendedor();
     }
 //-------------------metodo-1------------------------------------------------------------------------------------------------
     public void cadastrarPaises(String sigla, String nome){
@@ -229,7 +217,7 @@ public class ACMETrade {
     public void listarTodosOsAcordos(){
         Acordo acordo = null;
         if(convencao.getAcordo().size() > 0){
-            for(int i = 0; i <= convencao.getAcordo().size(); i++){
+            for(int i = 0; i < convencao.getAcordo().size(); i++){
                 acordo = convencao.getAcordo().get(i);
                 System.out.println("8:" + acordo.getCodigo() + ";" + acordo.getProduto() + ";" + acordo.getTaxa() + ";" + acordo.getComprador().getSigla() + ";" + acordo.getVendedor().getSigla());                    
             }
@@ -242,14 +230,13 @@ public class ACMETrade {
 //-----------------metodo-9--------------------------------------------------------------------------------------------------
     public void listarNaoVendedores(){
         ArrayList<Pais> paises = new ArrayList<Pais>();
-        Pais c = null;
         for(int i = 0; i < federacao.getPaises().size(); i++) {
             paises.add(federacao.getPaises().get(i));
         }
         for(int i = 0; i < paises.size(); i++) {
             for(int j = 0; j < convencao.getAcordo().size(); j++) {
                 if(paises.get(i).getSigla().equals(convencao.getAcordo().get(j).getVendedor().getSigla())) {
-                    paises.remove(i);
+                    paises.remove(i);        
                 }
             }
         }
@@ -263,8 +250,28 @@ public class ACMETrade {
     }
 //---------------------------------------------------------------------------------------------------------------------------
 //-----------------metodo-10--------------------------------------------------------------------------------------------------
-    public void metodo10() {
-
+    public void mostrarOPaisComAMaiorQuantidadeDeAcordosComoVendedor(){
+        if (convencao.getAcordo().isEmpty()) {
+            System.out.println("10:erro-nenhum pais encontrado.");
+            return;
+        }
+        int maiorQuantidade = 0;
+        String siglaMaior = "";
+        String nomeMaior = "";
+        for (Pais pais : federacao.getPaises()) {
+            int quantidade = 0;
+            for (Acordo acordo : convencao.getAcordo()) {
+                if (pais.getSigla().equals(acordo.getVendedor().getSigla())) {
+                    quantidade++;
+                }
+            }
+            if (quantidade > maiorQuantidade) {
+                maiorQuantidade = quantidade;
+                siglaMaior = pais.getSigla();
+                nomeMaior = pais.getNome();
+            }
+        }
+        System.out.println("10:" + siglaMaior + ";" + nomeMaior + ";" + maiorQuantidade);
     }
 //---------------------------------------------------------------------------------------------------------------------------
     private void redirecionaIn() {
@@ -286,7 +293,6 @@ public class ACMETrade {
         }
         Locale.setDefault(Locale.ENGLISH); 
     }
-    
     private void restauraEntrada() {
         entrada = new Scanner(System.in);
     }
