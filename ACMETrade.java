@@ -229,22 +229,27 @@ public class ACMETrade {
 //---------------------------------------------------------------------------------------------------------------------------
 //-----------------metodo-9--------------------------------------------------------------------------------------------------
     public void listarNaoVendedores(){
-        ArrayList<Pais> paises = new ArrayList<Pais>();
+        ArrayList<Pais> pais = new ArrayList<Pais>();
         for(int i = 0; i < federacao.getPaises().size(); i++) {
-            paises.add(federacao.getPaises().get(i));
+            pais.add(federacao.getPaises().get(i));
         }
-        for(int i = 0; i < paises.size(); i++) {
-            for(int j = 0; j < convencao.getAcordo().size(); j++) {
-                if(paises.get(i).getSigla().equals(convencao.getAcordo().get(j).getVendedor().getSigla())) {
-                    paises.remove(i);        
-                }
+        if(convencao.getAcordo().size() == 0){
+            for(int k = 0; k < pais.size(); k++) {
+                System.out.println("9:" + federacao.getPaises().get(k).getSigla() + ";" + federacao.getPaises().get(k).getNome());
             }
         }
-        if(paises.size() == 0) {
-            System.out.println("9:erro-nenhum país encontrado.");
-        } else {
-            for(int k = 0; k < paises.size(); k++) {
-                System.out.println("9:" + paises.get(k).getSigla() + ";" + paises.get(k).getNome());
+        if(convencao.getAcordo().size() > 0){
+            for(int k = 0; k < convencao.getAcordo().size(); k++){
+                String siglaComp= convencao.getAcordo().get(k).getVendedor().getSigla();
+                for(int j = 0; j < pais.size(); j++){
+                    String sigla = pais.get(j).getSigla();
+                    if(sigla.equals(siglaComp)){
+                        pais.remove(j);
+                    }
+                }
+            }
+            for(int k = 0; k < pais.size(); k++) {
+               System.out.println("9:" + pais.get(k).getSigla() + ";" + pais.get(k).getNome());
             }
         }
     }

@@ -1,0 +1,31 @@
+1:BR;Brasil
+1:AR;Argentina
+1:CL;Chile
+1:CN;China
+1:US;Estados Unidos da America
+1:CA;Canada
+1:MX;Mexico
+2:111;Cafe;11.11;BR;AR
+2:222;Aviao;22.22;US;BR
+2:333;Vinho;33.33;BR;CL
+2:444;Automovel;44.44;CA;MX
+2:555;Carne;55.55;MX;BR
+2:666;Soja;66.66;CN;BR
+2:777;Gas;77.77;CN;CA
+2:888;Automovel eletrico;88.88;BR;CN
+2:999;Cafe;99.99;US;BR
+3:BR;Brasil
+4:777;Gas;77.77;CN;CN
+5:666;Soja;66.66;BR;CN
+5:777;Gas;77.77;CA;CN
+6:BR;Brasil-Brazil
+7:acordos removidos.
+8:111;Cafe;11.11;BR;AR
+8:333;Vinho;33.33;BR;CL
+8:444;Automovel;44.44;CA;MX
+8:555;Carne;55.55;MX;BR
+8:666;Soja;66.66;CN;BR
+8:777;Gas;77.77;CN;CA
+8:888;Automovel eletrico;88.88;BR;CN
+9:US;Estados Unidos da America
+10:BR;Brasil;2
